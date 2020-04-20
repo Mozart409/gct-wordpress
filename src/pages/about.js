@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 const Hero = () => (
-  <div className="text-center">
-    <h1 className="text-5xl font-extrabold text-indigo-600 leading-9 tracking-tight">
+  <div className='text-center'>
+    <h1 className='text-5xl font-extrabold text-indigo-600 leading-9 tracking-tight'>
       About
     </h1>
     <br />
-    <h2 className="text-3xl font-bold text-gray-800 leading-8 tracking-tight">
+    <h2 className='text-3xl font-bold text-gray-800 leading-8 tracking-tight'>
       Lorem Ipsum
     </h2>
-    <p className="mt-1 text-lg text-gray-700 leading-2 text-left font-body">
+    <p className='mt-1 text-lg text-gray-700 leading-2 text-left font-body'>
       Voluptate Lorem laborum eiusmod occaecat fugiat exercitation cupidatat
       nulla. Consectetur labore aute irure dolore. Lorem adipisicing excepteur
       mollit nisi non exercitation. Aute quis consequat duis aliquip magna. Et
@@ -28,16 +28,16 @@ const Hero = () => (
       exercitation anim incididunt elit veniam officia ex aliqua id.
     </p>
   </div>
-);
+)
 
-function AboutPage() {
+function AboutPage () {
   return (
     <Layout>
-      <SEO title="About" keywords={[`About`]} />
+      <SEO title='About' keywords={[`About`]} />
 
       <Hero />
     </Layout>
-  );
+  )
 }
 
-export default AboutPage;
+export default AboutPage
