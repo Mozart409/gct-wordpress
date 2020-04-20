@@ -3,23 +3,23 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
 export default class IndexPage extends React.Component {
-  render() {
+  render () {
     const { posts, title } = this.props
 
     return (
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">{title}</h1>
+      <section className='section'>
+        <div className='container'>
+          <div className='content'>
+            <h1 className='has-text-weight-bold is-size-2'>{title}</h1>
           </div>
           {posts.map(({ node: post }) => (
             <div
-              className="content"
+              className='content'
               style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
               key={post.id}
             >
               <p>
-                <Link className="has-text-primary" to={post.slug}>
+                <Link className='has-text-primary' to={post.slug}>
                   {post.title}
                 </Link>
                 <span> &bull; </span>
@@ -33,10 +33,10 @@ export default class IndexPage extends React.Component {
               <div>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: post.excerpt.replace(/<p class="link-more.*/, ''),
+                    __html: post.excerpt.replace(/<p class="link-more.*/, '')
                   }}
                 />
-                <Link className="button is-small" to={post.slug}>
+                <Link className='button is-small' to={post.slug}>
                   Keep Reading →
                 </Link>
               </div>
@@ -50,7 +50,7 @@ export default class IndexPage extends React.Component {
 
 IndexPage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string,
+  title: PropTypes.string
 }
 
 export const pageQuery = graphql`

@@ -1,6 +1,6 @@
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import Logo from '../images/tailwind-icon.png'
 
 function Header ({ siteTitle }) {
@@ -10,7 +10,19 @@ function Header ({ siteTitle }) {
     { href: '/about', name: 'About' },
     { href: '/contact', name: 'Contact' }
   ]
-
+  const navdata = useStaticQuery(graphql`
+    query navdata{
+      allWordpressPage(sort: { fields: wordpress_id }, limit: 5) {
+        edges {
+          node {
+            title
+            path
+            id
+          }
+        }
+      }
+    }
+  `)
   return (
     <nav className='bg-white'>
       <div className='flex flex-wrap items-center justify-between max-w-4xl mx-auto p-4 md:p-8'>
@@ -41,7 +53,7 @@ function Header ({ siteTitle }) {
           } md:block md:flex md:items-center w-full md:w-auto`}
         >
           <div className=''>
-            {NavLinks &&
+            {/* {NavLinks &&
               NavLinks.map(node => (
                 <Link
                   to={node.href}
@@ -49,7 +61,17 @@ function Header ({ siteTitle }) {
                 >
                   {node.name}
                 </Link>
-              ))}
+              ))} */}
+
+            {navdata.allWordpressPage.edges.map(node => (
+              <Link
+                key={node.id}
+                to={node.path}
+                className='block md:inline-block mt-4 md:mt-0 mr-6 no-underline text-black'
+              >
+                {node.title}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

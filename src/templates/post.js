@@ -118,7 +118,6 @@ export const pageQuery = graphql`
   }
 `
 
-
 /* query BlogPostByID($id: String!) {
   wordpressPost(id: { eq: $id }) {
     id

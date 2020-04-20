@@ -33,7 +33,7 @@ module.exports = {
         useACF: false
       }
     },
-    {
+    /*     {
       resolve: `gatsby-plugin-accessibilityjs`,
       options: {
         injectStyles: `
@@ -59,7 +59,7 @@ module.exports = {
           console.log(error)
         }
       }
-    },
+    }, */
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {

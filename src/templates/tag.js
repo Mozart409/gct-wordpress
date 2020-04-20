@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
@@ -13,6 +13,24 @@ const Tag = props => {
     totalCount === 1 ? '' : 's'
   } with the tag ${tag}`
 
+  const pageQuery = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+      allWordpressPost(filter: {slug: {eq: "slug"}}) {
+        totalCount
+        edges {
+          node {
+            ...PostListFields
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Layout>
       <Helmet title={`${tag} | ${siteTitle}`} />
@@ -22,21 +40,3 @@ const Tag = props => {
 }
 
 export default Tag
-
-export const pageQuery = graphql`
-  query TagPage($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allWordpressPost(filter: {slug: {eq: $slug}}) {
-      totalCount
-      edges {
-        node {
-          ...PostListFields
-        }
-      }
-    }
-  }
-`
