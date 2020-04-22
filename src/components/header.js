@@ -11,13 +11,12 @@ function Header ({ siteTitle }) {
     { href: '/contact', name: 'Contact' }
   ]
   const navdata = useStaticQuery(graphql`
-    query navdata{
-      allWordpressPage(sort: { fields: wordpress_id }, limit: 5) {
+    query navdata {
+      allWordpressPage(limit: 5) {
         edges {
           node {
-            title
             path
-            id
+            title
           }
         }
       }
@@ -53,19 +52,9 @@ function Header ({ siteTitle }) {
           } md:block md:flex md:items-center w-full md:w-auto`}
         >
           <div className=''>
-            {/* {NavLinks &&
-              NavLinks.map(node => (
-                <Link
-                  to={node.href}
-                  className='block md:inline-block mt-4 md:mt-0 mr-6 no-underline text-black'
-                >
-                  {node.name}
-                </Link>
-              ))} */}
-
-            {navdata.allWordpressPage.edges.map(node => (
+            {navdata.allWordpressPage.edges.map(({ node }) => (
               <Link
-                key={node.id}
+                key={node.path}
                 to={node.path}
                 className='block md:inline-block mt-4 md:mt-0 mr-6 no-underline text-black'
               >

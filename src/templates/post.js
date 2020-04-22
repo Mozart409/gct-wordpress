@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 
 export const BlogPostTemplate = ({
   content,
@@ -13,56 +13,54 @@ export const BlogPostTemplate = ({
   author
 }) => {
   return (
-    <section className='section'>
-      <div className='container content'>
-        <div className='columns'>
-          <div className='column is-10 is-offset-1'>
-            <h1 className='title is-size-2 has-text-weight-bold is-bold-light'>
-              {title}
-            </h1>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            <div style={{ marginTop: `4rem` }}>
-              <p>
-                {date} - posted by{' '}
-                <Link to={`/author/${author.slug}`}>{author.name}</Link>
-              </p>
-              {categories && categories.length ? (
-                <div>
-                  <h4>Categories</h4>
-                  <ul className='taglist'>
-                    {categories.map(category => (
-                      <li key={`${category.slug}cat`}>
-                        <Link to={`/categories/${category.slug}/`}>
-                          {category.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              {tags && tags.length ? (
-                <div>
-                  <h4>Tags</h4>
-                  <ul className='taglist'>
-                    {tags.map(tag => (
-                      <li key={`${tag.slug}tag`}>
-                        <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-            </div>
+    <div className=''>
+      <h1 className='text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate'>
+        {title}
+      </h1>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div style={{ marginTop: `4rem` }}>
+        <p>
+          {date} - posted by{' '}
+          <Link to={`/author/${author.slug}`}>{author.name}</Link>
+        </p>
+        {categories && categories.length ? (
+          <div>
+            <h4>Categories</h4>
+            <ul className='taglist'>
+              {categories.map(category => (
+                <li key={`${category.slug}cat`}>
+                  <Link to={`/categories/${category.slug}/`}>
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        ) : null}
+        {tags && tags.length ? (
+          <div>
+            <h4>Tags</h4>
+            <ul className='taglist'>
+              {tags.map(tag => (
+                <li key={`${tag.slug}tag`}>
+                  <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
-    </section>
+    </div>
   )
 }
 
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
+  categories: PropTypes.array,
+  tags: PropTypes.func,
+  date: PropTypes.string,
+  author: PropTypes.object
 }
 
 const BlogPost = ({ data }) => {
