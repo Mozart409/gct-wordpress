@@ -19,8 +19,5 @@ jobs:
       - name: Install dependencies
         run: yarn install --prod --pure-lockfile
 
-      - name: Format
-        run: yarn run format
-
       - name: Build
         run: yarn run build
