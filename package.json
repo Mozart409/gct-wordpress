@@ -34,7 +34,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "clean":"gatsby clean",
+    "clean": "gatsby clean",
     "lint": "prettier-standard --lint '**/*.{js,css}'",
     "format": "prettier-standard --format '**/*.{js,css}'",
     "build": "gatsby clean && gatsby build",

@@ -1,5 +1,21 @@
 @tailwind base;
 
+h1 {
+  @apply text-3xl leading-loose;
+}
+h2 {
+  @apply text-2xl leading-relaxed;
+}
+h3,
+h4,
+h5,
+h6 {
+  @apply text-xl leading-relaxed;
+}
+
+p {
+  @apply text-base text-gray-700;
+}
 @tailwind components;
 
 @tailwind utilities;

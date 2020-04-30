@@ -2,6 +2,7 @@ import React from 'react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import PostList from '../components/PostList'
 
 const Hero = () => (
   <div className='text-center'>
@@ -38,8 +39,8 @@ function IndexPage () {
         title='Home'
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
       />
-
-      <Hero />
+      <span>test('should ', () => {})</span>
+      <PostList />
     </Layout>
   )
 }
