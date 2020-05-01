@@ -39,7 +39,7 @@ function IndexPage () {
         title='Home'
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
       />
-      <span>test('should ', () => {})</span>
+
       <PostList />
     </Layout>
   )
